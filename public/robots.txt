@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://sprosi-vracha.com/sitemap.xml
+
