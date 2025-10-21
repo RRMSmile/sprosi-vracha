@@ -21,8 +21,17 @@ jobs:
       - name: 📦 Install dependencies
         run: npm ci
 
-      - name: 🏗️ Build static export
-        run: npm run build && npm run export
+      - name: 🏗️ Build static site (Next.js 15)
+        run: npm run build
+
+      - name: 🧹 Clean remote directory before upload
+        env:
+          BEGET_HOST: ${{ secrets.BEGET_HOST }}
+          BEGET_USER: ${{ secrets.BEGET_USER }}
+          BEGET_PASSWORD: ${{ secrets.BEGET_PASSWORD }}
+        run: |
+          echo "🧹 Cleaning old files on Beget..."
+          sshpass -p "${BEGET_PASSWORD}" ssh -o StrictHostKeyChecking=no ${BEGET_USER}@${BEGET_HOST} "rm -rf /home/e/${BEGET_USER}/data/www/sprosi-vracha.com/*"
 
       - name: 📤 Upload via SCP to Beget
         env:
@@ -30,8 +39,8 @@ jobs:
           BEGET_USER: ${{ secrets.BEGET_USER }}
           BEGET_PASSWORD: ${{ secrets.BEGET_PASSWORD }}
         run: |
-          echo "🔗 Connecting to Beget..."
-          sshpass -p "${BEGET_PASSWORD}" scp -r ./out/* ${BEGET_USER}@${BEGET_HOST}:/home/e/${BEGET_USER}/data/www/sprosi-vracha.com/
+          echo "🔗 Uploading new build to Beget..."
+          sshpass -p "${BEGET_PASSWORD}" scp -o StrictHostKeyChecking=no -r ./out/* ${BEGET_USER}@${BEGET_HOST}:/home/e/${BEGET_USER}/data/www/sprosi-vracha.com/
 
       - name: ✅ Notify success
         if: success()
