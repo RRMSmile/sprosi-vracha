@@ -2,8 +2,7 @@ name: Deploy Sprosivracha Frontend to Beget
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   deploy:
@@ -11,27 +10,47 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1) Получаем код
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2) Node.js + кеш npm (ускоряет сборку)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Setup npm cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
 
+      # 3) Установка зависимостей и сборка статики
       - name: Install dependencies
         run: npm ci
-
       - name: Build Next.js static site
         run: npm run build
 
+      # 4) Проверка SSH-доступа к Beget
       - name: Check SSH connection to Beget
         run: |
           echo "${{ secrets.BEGET_SSH_KEY }}" > id_ed25519
           chmod 600 id_ed25519
-          ssh -i id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.BEGET_USER }}@${{ secrets.BEGET_HOST }} "echo '✅ SSH connection to Beget successful'"
+          ssh -i id_ed25519 -o StrictHostKeyChecking=no \
+            ${{ secrets.BEGET_USER }}@${{ secrets.BEGET_HOST }} \
+            "echo '✅ SSH connection to Beget successful'"
 
-      - name: Deploy to Beget via SSH
+      # 5) Минификация статики (JS/CSS/HTML) перед заливкой
+      - name: Optimize static output
+        run: |
+          npm i -g minify
+          find out -type f \( -name "*.js" -o -name "*.css" -o -name "*.html" \) -print0 \
+            | xargs -0 -I{} sh -c 'minify "{}" > "{}.tmp" && mv "{}.tmp" "{}"'
+
+      # 6) Деплой на Beget (очистка и заливка)
+      - name: Deploy to Beget via SCP
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.BEGET_HOST }}
@@ -43,14 +62,52 @@ jobs:
           overwrite: true
           rm: true
 
-      - name: Notify Telegram (optional)
+      # 7) Health-check сайта
+      - name: Verify website is online
+        run: |
+          sleep 5
+          curl -Is https://sprosi-vracha.com | head -n 1
+
+      # 8) Пингуем поисковики (ускоряем переиндексацию)
+      - name: Ping search engines
+        run: |
+          curl -s "https://www.google.com/ping?sitemap=https://sprosi-vracha.com/sitemap.xml" || true
+          curl -s "https://yandex.ru/ping?sitemap=https://sprosi-vracha.com/sitemap.xml" || true
+
+      # 9) (Опционально) Lighthouse аудит — сохраняет отчёт как артефакты
+      - name: Run Lighthouse audit
+        if: always()
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          urls: |
+            https://sprosi-vracha.com
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      # 10) Чистим приватный ключ с раннера
+      - name: Cleanup SSH key
+        if: always()
+        run: rm -f id_ed25519
+
+      # 11) Уведомление в Telegram
+      - name: Notify Telegram
         if: always()
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.SSL_BOT_CHAT_ID }}
           token: ${{ secrets.SSL_BOT_TOKEN }}
           message: |
-            ✅ Deploy completed for *sprosi-vracha.com*
-            🔹 Branch: ${{ github.ref_name }}
-            🔹 Commit: ${{ github.sha }}
-            🔹 Time: ${{ github.event.head_commit.timestamp }}
+            ${{ job.status == 'success' && '✅' || '❌' }} *Deploy ${ job.status == 'success' && 'успешен' || 'с ошибками' }*
+            🌐 https://sprosi-vracha.com
+            🧩 Commit: `${{ github.sha }}`
+            🌿 Branch: `${{ github.ref_name }}`
+            🕒 At: ${{ github.event.head_commit.timestamp }}
+
+      # 12) (Опционально) Cloudflare purge — раскомментируй и добавь секреты CF_API_TOKEN и CF_ZONE_ID
+      # - name: Purge Cloudflare cache
+      #   if: success()
+      #   run: |
+      #     curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CF_ZONE_ID }}/purge_cache" \
+      #       -H "Authorization: Bearer ${{ secrets.CF_API_TOKEN }}" \
+      #       -H "Content-Type: application/json" \
+      #       --data '{"purge_everything":true}'
