@@ -30,6 +30,8 @@ jobs:
           BEGET_USER: ${{ secrets.BEGET_USER }}
           BEGET_PASSWORD: ${{ secrets.BEGET_PASSWORD }}
         run: |
+          echo "🧹 Installing sshpass..."
+          sudo apt-get update && sudo apt-get install -y sshpass
           echo "🧹 Cleaning old files on Beget..."
           sshpass -p "${BEGET_PASSWORD}" ssh -o StrictHostKeyChecking=no ${BEGET_USER}@${BEGET_HOST} "rm -rf /home/e/${BEGET_USER}/data/www/sprosi-vracha.com/*"
 
@@ -57,3 +59,4 @@ jobs:
           -d chat_id=${{ secrets.SSL_BOT_CHAT_ID }} \
           -d parse_mode="Markdown" \
           -d text="❌ *Ошибка деплоя!*%0AПроверь логи GitHub Actions.%0A🕒 $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+fix: install sshpass for Beget deploy
