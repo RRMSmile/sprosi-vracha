@@ -1,4 +1,4 @@
-name: 🚀 Deploy Sprosivracha to Beget + Telegram Notify
+name: Deploy Sprosivracha Frontend to Beget
 
 on:
   push:
@@ -7,55 +7,41 @@ on:
 
 jobs:
   deploy:
+    name: Build & Deploy via SSH
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🧩 Checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: ⚙️ Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: 📦 Install dependencies
+      - name: Install dependencies
         run: npm ci
 
-      - name: 🏗️ Build static site (Next.js 15)
+      - name: Build Next.js static site
         run: npm run build
 
-      - name: 🧹 Clean remote directory before upload
-        env:
-          BEGET_HOST: ${{ secrets.BEGET_HOST }}
-          BEGET_USER: ${{ secrets.BEGET_USER }}
-          BEGET_PASSWORD: ${{ secrets.BEGET_PASSWORD }}
-        run: |
-          echo "🧹 Installing sshpass..."
-          sudo apt-get update && sudo apt-get install -y sshpass
-          echo "🧹 Cleaning old files on Beget..."
-          sshpass -p "${BEGET_PASSWORD}" ssh -o StrictHostKeyChecking=no ${BEGET_USER}@${BEGET_HOST} "rm -rf /home/e/${BEGET_USER}/data/www/sprosi-vracha.com/*"
+      - name: Deploy to Beget via SSH
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.BEGET_HOST }}
+          username: ${{ secrets.BEGET_USER }}
+          key: ${{ secrets.BEGET_SSH_KEY }}
+          source: "out/*"
+          target: ${{ secrets.BEGET_PATH }}
 
-      - name: 📤 Upload via SCP to Beget
-        env:
-          BEGET_HOST: ${{ secrets.BEGET_HOST }}
-          BEGET_USER: ${{ secrets.BEGET_USER }}
-          BEGET_PASSWORD: ${{ secrets.BEGET_PASSWORD }}
-        run: |
-          echo "🔗 Uploading new build to Beget..."
-          sshpass -p "${BEGET_PASSWORD}" scp -o StrictHostKeyChecking=no -r ./out/* ${BEGET_USER}@${BEGET_HOST}:/home/e/${BEGET_USER}/data/www/sprosi-vracha.com/
-
-      - name: ✅ Notify success
-        if: success()
-        run: |
-          curl -s -X POST https://api.telegram.org/bot${{ secrets.SSL_BOT_TOKEN }}/sendMessage \
-          -d chat_id=${{ secrets.SSL_BOT_CHAT_ID }} \
-          -d parse_mode="Markdown" \
-          -d text="✅ *Деплой успешно завершён!*%0A🌐 [sprosi-vracha.com](https://sprosi-vracha.com)%0A🕒 $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
-
-      - name: ❌ Notify failure
-        if: failure()
-        run: |
-          curl -s -X POST https://api.telegram.org/bot${{ secrets.SSL_BOT_TOKEN }}/sendMessage \
-          -d chat_id=${{ secrets.SSL_BOT_CHAT_ID }} \
-          -d parse_mode="Markdown" \
-          -d text="❌ *Ошибка деплоя!*%0AПроверь логи GitHub Actions.%0A🕒 $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+      - name: Notify Telegram (optional)
+        if: always()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TG_CHAT_ID }}
+          token: ${{ secrets.TG_BOT_TOKEN }}
+          message: |
+            ✅ Deploy completed for *sprosi-vracha.com*
+            🔹 Branch: ${{ github.ref_name }}
+            🔹 Commit: ${{ github.sha }}
+            🔹 Time: ${{ github.event.head_commit.timestamp }}
