@@ -25,6 +25,12 @@ jobs:
       - name: Build Next.js static site
         run: npm run build
 
+      - name: Check SSH connection to Beget
+        run: |
+          echo "${{ secrets.BEGET_SSH_KEY }}" > id_ed25519
+          chmod 600 id_ed25519
+          ssh -i id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.BEGET_USER }}@${{ secrets.BEGET_HOST }} "echo '✅ SSH connection to Beget successful'"
+
       - name: Deploy to Beget via SSH
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -32,14 +38,17 @@ jobs:
           username: ${{ secrets.BEGET_USER }}
           key: ${{ secrets.BEGET_SSH_KEY }}
           source: "out/*"
-          target: ${{ secrets.BEGET_PATH }}
+          target: "/home/e/${{ secrets.BEGET_USER }}/data/www/sprosi-vracha.com/"
+          strip_components: 0
+          overwrite: true
+          rm: true
 
       - name: Notify Telegram (optional)
         if: always()
         uses: appleboy/telegram-action@master
         with:
-          to: ${{ secrets.TG_CHAT_ID }}
-          token: ${{ secrets.TG_BOT_TOKEN }}
+          to: ${{ secrets.SSL_BOT_CHAT_ID }}
+          token: ${{ secrets.SSL_BOT_TOKEN }}
           message: |
             ✅ Deploy completed for *sprosi-vracha.com*
             🔹 Branch: ${{ github.ref_name }}
