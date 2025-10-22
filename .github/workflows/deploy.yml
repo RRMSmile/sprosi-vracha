@@ -21,8 +21,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Next.js static export
-        run: npm run build && npm run export
+      # Next.js 15: экспорт уже встроен, поэтому только build
+      - name: Build static site
+        run: npm run build
 
       - name: Prepare SSH key
         run: |
@@ -30,26 +31,26 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           printf "Host beget\n  HostName ${{ secrets.BEGET_HOST }}\n  User ${{ secrets.BEGET_USER }}\n  IdentityFile ~/.ssh/id_ed25519\n  StrictHostKeyChecking no\n" > ~/.ssh/config
-        shell: bash
 
       - name: Check SSH access
-        run: |
-          set -euo pipefail
-          ssh -o BatchMode=yes -o ConnectTimeout=10 beget "echo SSH_OK"
-        shell: bash
+        run: ssh -o BatchMode=yes -o ConnectTimeout=10 beget "echo SSH_OK"
 
       - name: Clean remote folder
         run: ssh beget "rm -rf /home/e/${{ secrets.BEGET_USER }}/data/www/sprosi-vracha.com/*"
-        shell: bash
 
-      - name: Upload static site
+      - name: 🚀 Upload files to Beget
         run: scp -r ./out/* beget:/home/e/${{ secrets.BEGET_USER }}/data/www/sprosi-vracha.com/
-        shell: bash
 
-      - name: Notify Telegram (success)
+      - name: ✅ Notify Telegram (Success)
         if: success()
         run: |
           curl -s -X POST https://api.telegram.org/bot${{ secrets.TG_BOT_TOKEN }}/sendMessage \
-            -d chat_id=${{ secrets.TG_CHAT_ID }} \
-            -d parse_mode="Markdown" \
-            -d text="✅ Деплой завершён: [sprosi-vracha.com](https://sprosi-vracha.com)"
+          -d chat_id=${{ secrets.TG_CHAT_ID }} \
+          -d text="✅ Деплой успешно завершён!%0A🌐 https://sprosi-vracha.com"
+
+      - name: ❌ Notify Telegram (Failure)
+        if: failure()
+        run: |
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.TG_BOT_TOKEN }}/sendMessage \
+          -d chat_id=${{ secrets.TG_CHAT_ID }} \
+          -d text="❌ Ошибка деплоя! Проверь GitHub Actions."
