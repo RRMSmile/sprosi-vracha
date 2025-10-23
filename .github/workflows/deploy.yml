@@ -2,30 +2,29 @@ name: Deploy Sprosi-Vracha
 
 on:
   push:
-    branches: [ "main" ]   # деплой при каждом git push main
+    branches: [ "main" ]   # автодеплой при пуше в main
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      # 1. Клонируем репозиторий
+      # 1️⃣ Клонируем код
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 2. Устанавливаем Node.js
+      # 2️⃣ Устанавливаем Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      # 3. Сборка проекта
-      - name: Install deps and build
+      # 3️⃣ Сборка проекта
+      - name: Build project
         run: |
           npm ci
           npm run build
 
-      # 4. Расшифровываем SSH-ключ (base64)
+      # 4️⃣ Расшифровка SSH-ключа (base64)
       - name: Prepare SSH key
         env:
           BEGET_SSH_KEY_B64: ${{ secrets.BEGET_SSH_KEY_B64 }}
@@ -33,17 +32,22 @@ jobs:
           echo "$BEGET_SSH_KEY_B64" | base64 -d > key.pem
           chmod 600 key.pem
 
-      # 5. Деплой на Beget
+      # 5️⃣ Деплой на сервер Beget
       - name: Deploy to Beget
+        env:
+          BEGET_HOST: ${{ secrets.BEGET_HOST }}
+          BEGET_USER: ${{ secrets.BEGET_USER }}
         run: |
-          rsync -avz --delete -e "ssh -i key.pem -o StrictHostKeyChecking=no" out/ elaineri@elaineri.beget.tech:/home/e/elaineri/data/www/sprosi-vracha.com/
+          rsync -avz --delete \
+            -e "ssh -i key.pem -o StrictHostKeyChecking=no" \
+            out/ $BEGET_USER@$BEGET_HOST:/home/e/$BEGET_USER/data/www/sprosi-vracha.com/
 
-      # 6. (Необязательно) Уведомление в Telegram
+      # 6️⃣ Уведомление в Telegram
       - name: Send Telegram notification
         if: always()
         env:
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          TG_BOT_TOKEN: ${{ secrets.SSL_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.SSL_BOT_CHAT_ID }}
         run: |
           DEPLOY_STATUS=${{ job.status }}
           MSG="✅ *Sprosi-Vracha:* деплой завершён со статусом *$DEPLOY_STATUS* на ветке *main*"
