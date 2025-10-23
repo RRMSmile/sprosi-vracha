@@ -2,29 +2,52 @@ name: Deploy Sprosi-Vracha
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main" ]   # деплой при каждом git push main
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+
     steps:
+      # 1. Клонируем репозиторий
       - name: Checkout
         uses: actions/checkout@v4
 
+      # 2. Устанавливаем Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
+      # 3. Сборка проекта
       - name: Install deps and build
         run: |
           npm ci
           npm run build
 
-      - name: Deploy to Beget
+      # 4. Расшифровываем SSH-ключ (base64)
+      - name: Prepare SSH key
         env:
-          BEGET_SSH_KEY: ${{ secrets.BEGET_SSH_KEY }}
+          BEGET_SSH_KEY_B64: ${{ secrets.BEGET_SSH_KEY_B64 }}
         run: |
-          echo "$BEGET_SSH_KEY" > key.pem
+          echo "$BEGET_SSH_KEY_B64" | base64 -d > key.pem
           chmod 600 key.pem
-          rsync -avz -e "ssh -i key.pem -o StrictHostKeyChecking=no" out/ elaineri@elaineri.beget.tech:/home/e/elaineri/data/www/sprosi-vracha.com/
+
+      # 5. Деплой на Beget
+      - name: Deploy to Beget
+        run: |
+          rsync -avz --delete -e "ssh -i key.pem -o StrictHostKeyChecking=no" out/ elaineri@elaineri.beget.tech:/home/e/elaineri/data/www/sprosi-vracha.com/
+
+      # 6. (Необязательно) Уведомление в Telegram
+      - name: Send Telegram notification
+        if: always()
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+        run: |
+          DEPLOY_STATUS=${{ job.status }}
+          MSG="✅ *Sprosi-Vracha:* деплой завершён со статусом *$DEPLOY_STATUS* на ветке *main*"
+          curl -s -X POST "https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage" \
+            -d chat_id="${TG_CHAT_ID}" \
+            -d parse_mode="Markdown" \
+            -d text="$MSG"
