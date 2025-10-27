@@ -54,3 +54,46 @@ Node.js v20.19.5
 🌐 Проверка доступности сайта...
 📨 Telegram уведомление отправлено
 🎉 Деплой завершён: 2025-10-27 08:22:20
+🚀 [Sprosi-Vracha] Запуск полного деплоя...
+📦 Сборка фронта...
+  ▲ Next.js 15.0.0
+  - Environments: .env.production
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/5) ...
+   Generating static pages (1/5) 
+   Generating static pages (2/5) 
+   Generating static pages (3/5) 
+ ✓ Generating static pages (5/5)
+   Finalizing page optimization ...
+   Collecting build traces ...
+   Exporting (0/3) ...
+ ✓ Exporting (3/3)
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    540 B          99.8 kB
+├ ○ /_not-found                          897 B           100 kB
+└ ○ /health                              1.01 kB         100 kB
++ First Load JS shared by all            99.2 kB
+  ├ chunks/215-a7e0b1eef037aa58.js       44.8 kB
+  ├ chunks/4bd1b696-239c50da69b5278f.js  52.6 kB
+  └ other shared chunks (total)          1.86 kB
+
+
+○  (Static)  prerendered as static content
+
+📤 Деплой в /var/www/sprosi-vracha...
+2025/10/27 08:24:30 [emerg] 1153120#1153120: open() "/etc/nginx/sites-enabled/sprosi-vracha.com.conf" failed (2: No such file or directory) in /etc/nginx/nginx.conf:60
+nginx: configuration file /etc/nginx/nginx.conf test failed
+🗺  Генерация sitemap...
+[OK] Sitemap updated: 4 URLs
+(node:1153121) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ai-sitemap/ai-sitemap.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+🔁 Проверка статуса AI-сервисов...
+💾 Создание резервной копии...
+✅ Бэкап создан (220K)
