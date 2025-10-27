@@ -1,0 +1,28 @@
+node:internal/modules/package_json_reader:93
+        throw error;
+        ^
+
+SyntaxError: Error parsing /opt/sprosi-vracha-ai/package.json: Expected double-quoted property name in JSON at position 24
+    at parse (<anonymous>)
+    at read (node:internal/modules/package_json_reader:80:16)
+    at readPackage (node:internal/modules/package_json_reader:141:10)
+    at readPackageScope (node:internal/modules/package_json_reader:164:19)
+    at shouldUseESMLoader (node:internal/modules/run_main:79:15)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:157:24)
+    at node:internal/main/run_main_module:28:49 {
+  path: '/opt/sprosi-vracha-ai/package.json'
+}
+
+Node.js v20.19.5
+[2025-10-27T01:13:38.587Z] 🪄 Запуск AI Maintenance...
+[2025-10-27T01:13:38.587Z] 🪄 Запуск AI Maintenance...
+[2025-10-27T01:13:38.595Z] 🧹 Очистка бэкапов старше 7 дней...
+[2025-10-27T01:13:38.595Z] 🧹 Очистка бэкапов старше 7 дней...
+find: ‘/opt/sprosi-vracha-ai/backups’: No such file or directory
+[2025-10-27T01:13:38.602Z] 🗑️ Очистка логов старше 14 дней...
+[2025-10-27T01:13:38.602Z] 🗑️ Очистка логов старше 14 дней...
+find: ‘/opt/sprosi-vracha-ai/logs’: No such file or directory
+[2025-10-27T01:13:38.607Z] 🧼 Очистка npm cache...
+[2025-10-27T01:13:38.607Z] 🧼 Очистка npm cache...
+[2025-10-27T01:13:39.720Z] ✅ Обслуживание завершено успешно.
+[2025-10-27T01:13:39.720Z] ✅ Обслуживание завершено успешно.

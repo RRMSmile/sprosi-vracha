@@ -1,0 +1,48 @@
+(node:600364) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ops-autofix/ops-autofix.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:645637) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ops-autofix/ops-autofix.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:691390) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ops-autofix/ops-autofix.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:736661) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ops-autofix/ops-autofix.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:782699) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ops-autofix/ops-autofix.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:828145) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ops-autofix/ops-autofix.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:873463) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ops-autofix/ops-autofix.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:919217) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ops-autofix/ops-autofix.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:965333) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ops-autofix/ops-autofix.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1010726) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ops-autofix/ops-autofix.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1056083) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ops-autofix/ops-autofix.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1101502) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ops-autofix/ops-autofix.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

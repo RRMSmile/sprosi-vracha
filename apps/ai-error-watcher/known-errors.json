@@ -1,0 +1,11 @@
+[
+  "ai-recovery: ❌ ai-content-pipeline не найден — создаю таймер и сервис.",
+  "ai-recovery: ❌ ai-auto-publisher не найден — создаю таймер и сервис.",
+  "ai-recovery: ❌ ai-trend-mapper не найден — создаю таймер и сервис.",
+  "ai-recovery: ❌ ai-error-watcher не найден — создаю таймер и сервис.",
+  "ai-recovery: ❌ ai-healthcheck не найден — создаю таймер и сервис.",
+  "ai-recovery: ❌ ai-link-reporter не найден — создаю таймер и сервис.",
+  "ai-recovery: ❌ ai-summary-reporter не найден — создаю таймер и сервис.",
+  "ai-recovery: ❌ ai-telegram-reporter не найден — создаю таймер и сервис.",
+  "ai-auto-publisher: ⚠️"
+]

@@ -1,0 +1,19 @@
+[2025-10-27T01:22:47.857Z] 🚀 Запуск AI-TrendMapper...
+[2025-10-27T01:22:47.864Z] 🧭 Обновлён список трендов (5 тем)
+[2025-10-27T01:22:47.864Z] ✅ Завершено успешно.
+[2025-10-27T03:00:02.409Z] 🚀 Запуск AI-AutoPublisher...
+[2025-10-27T03:00:02.414Z] 🚀 Найдено 4 статей. Начинаю публикацию...
+[2025-10-27T03:00:02.414Z] 📝 Опубликована: test-article.md
+[2025-10-27T03:00:02.415Z] 📝 Опубликована: как-укрепить-иммунитет-осенью.md
+[2025-10-27T03:00:02.416Z] 📝 Опубликована: покраснение-глаз-и-жжение.md
+[2025-10-27T03:00:02.416Z] 📝 Опубликована: что-делать-при-панической-атаке.md
+[2025-10-27T03:00:19.905Z] 🌐 Сайт пересобран успешно.
+[2025-10-27T03:00:20.348Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/test-article.html
+[2025-10-27T03:00:20.555Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/как-укрепить-иммунитет-осенью.html
+[2025-10-27T03:00:20.753Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/покраснение-глаз-и-жжение.html
+[2025-10-27T03:00:20.959Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/что-делать-при-панической-атаке.html
+[2025-10-27T03:00:20.960Z] ✅ Публикация завершена успешно.
+(node:658520) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ai-trend-mapper/ai-trend-mapper.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

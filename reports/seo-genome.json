@@ -1,0 +1,44 @@
+{
+  "date": "2025-10-27T03:00:05.157Z",
+  "report": [
+    {
+      "query": "боль в спине",
+      "genome": {
+        "avgWordCount": 1,
+        "avgH2": 0,
+        "avgH3": 0,
+        "avgImages": 0,
+        "avgSectionLength": 1,
+        "hasFAQ": false,
+        "hasList": false,
+        "hasTable": false
+      }
+    },
+    {
+      "query": "повышенное давление",
+      "genome": {
+        "avgWordCount": 1,
+        "avgH2": 0,
+        "avgH3": 0,
+        "avgImages": 0,
+        "avgSectionLength": 1,
+        "hasFAQ": false,
+        "hasList": false,
+        "hasTable": false
+      }
+    },
+    {
+      "query": "кашель у ребёнка",
+      "genome": {
+        "avgWordCount": 1,
+        "avgH2": 0,
+        "avgH3": 0,
+        "avgImages": 0,
+        "avgSectionLength": 1,
+        "hasFAQ": false,
+        "hasList": false,
+        "hasTable": false
+      }
+    }
+  ]
+}

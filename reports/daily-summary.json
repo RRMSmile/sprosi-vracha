@@ -1,0 +1,25 @@
+{
+  "date": "2025-10-27T02:08:37.283Z",
+  "server": "sprosi-vracha.com",
+  "uptime": "up 2 days, 2 hours, 7 minutes",
+  "memory": "3.3Gi/3.8Gi",
+  "disk": "12G/48G",
+  "modules": {
+    "pipeline": false,
+    "publisher": false,
+    "trendMapper": false,
+    "errorWatcher": false,
+    "healthcheck": true,
+    "linkReporter": true
+  },
+  "stats": {
+    "total_articles": 4,
+    "broken_links": 0,
+    "recent_errors": 0,
+    "memory_usage": "3.2Gi/3.8Gi",
+    "disk_usage": "12G/48G"
+  },
+  "last_errors": [],
+  "broken_links": [],
+  "last_healthcheck": "2025-10-27T01:44:09.398Z"
+}

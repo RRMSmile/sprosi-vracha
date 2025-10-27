@@ -1,0 +1,15 @@
+{
+  "timestamp": "2025-10-27T08:09:55.394Z",
+  "server": "sprosi-vracha.com",
+  "memory": "3.2Gi/3.8Gi",
+  "disk": "12G/48G",
+  "timers_active": "19",
+  "modules": {
+    "ai-content-pipeline": false,
+    "ai-auto-publisher": false,
+    "ai-content-orchestrator": false,
+    "ai-trend-mapper": false,
+    "ai-error-watcher": false
+  },
+  "site_ok": false
+}

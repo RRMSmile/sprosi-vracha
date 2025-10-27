@@ -1,0 +1,139 @@
+[2025-10-27T01:23:59.902Z] 🚀 Запуск AI-AutoPublisher...
+[2025-10-27T01:23:59.910Z] ℹ️ Новых статей не найдено — пропуск.
+[2025-10-27T01:24:31.111Z] 🚀 Запуск AI-AutoPublisher...
+[2025-10-27T01:24:31.115Z] ℹ️ Новых статей не найдено — пропуск.
+[2025-10-27T01:25:36.912Z] 🚀 Запуск AI-AutoPublisher...
+[2025-10-27T01:25:36.912Z] 🚀 Запуск AI-AutoPublisher...
+[2025-10-27T01:25:36.916Z] ℹ️ Новых статей не найдено — пропуск.
+[2025-10-27T01:25:36.916Z] ℹ️ Новых статей не найдено — пропуск.
+[2025-10-27T01:26:11.406Z] 🚀 Запуск AI-AutoPublisher...
+[2025-10-27T01:26:11.411Z] 🚀 Найдено 1 статей. Начинаю публикацию...
+[2025-10-27T01:26:11.412Z] 📝 Опубликована: test-article.md
+[2025-10-27T01:26:11.756Z] ⚠️ Ошибка сборки: Command failed: cd /opt/sprosi-vracha/frontend && npm run export --silent
+ ⨯ 
+    `next export` has been removed in favor of 'output: export' in next.config.js.
+Learn more: https://nextjs.org/docs/app/building-your-application/deploying/static-exports
+  
+
+[2025-10-27T01:26:12.274Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/test-article.html
+[2025-10-27T01:26:12.275Z] ✅ Публикация завершена успешно.
+[2025-10-27T01:28:10.704Z] 🚀 Запуск AI-AutoPublisher...
+[2025-10-27T01:28:10.710Z] 🚀 Найдено 1 статей. Начинаю публикацию...
+[2025-10-27T01:28:10.710Z] 📝 Опубликована: test-article.md
+[2025-10-27T01:28:10.876Z] ⚠️ Ошибка сборки: Command failed: cd /opt/sprosi-vracha/frontend && npm run export --silent
+[2025-10-27T01:28:11.082Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/test-article.html
+[2025-10-27T01:28:11.082Z] ✅ Публикация завершена успешно.
+[2025-10-27T01:30:42.247Z] 🚀 Запуск AI-AutoPublisher...
+[2025-10-27T01:30:42.253Z] 🚀 Найдено 1 статей. Начинаю публикацию...
+[2025-10-27T01:30:42.255Z] 📝 Опубликована: test-article.md
+[2025-10-27T01:31:02.277Z] 🌐 Сайт пересобран успешно.
+[2025-10-27T01:31:03.283Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/test-article.html
+[2025-10-27T01:31:03.284Z] ✅ Публикация завершена успешно.
+[2025-10-27T02:05:39.120Z] 🚀 Запуск AI-AutoPublisher...
+[2025-10-27T02:05:39.127Z] 🚀 Найдено 4 статей. Начинаю публикацию...
+[2025-10-27T02:05:39.127Z] 📝 Опубликована: test-article.md
+[2025-10-27T02:05:39.129Z] 📝 Опубликована: как-укрепить-иммунитет-осенью.md
+[2025-10-27T02:05:39.130Z] 📝 Опубликована: покраснение-глаз-и-жжение.md
+[2025-10-27T02:05:39.130Z] 📝 Опубликована: что-делать-при-панической-атаке.md
+[2025-10-27T02:05:56.913Z] 🌐 Сайт пересобран успешно.
+[2025-10-27T02:05:57.132Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/test-article.html
+[2025-10-27T02:05:57.338Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/как-укрепить-иммунитет-осенью.html
+[2025-10-27T02:05:57.559Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/покраснение-глаз-и-жжение.html
+[2025-10-27T02:05:57.766Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/что-делать-при-панической-атаке.html
+[2025-10-27T02:05:57.766Z] ✅ Публикация завершена успешно.
+(node:575473) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ai-auto-publisher/ai-auto-publisher.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2025-10-27T02:08:18.271Z] 🚀 Запуск AI-AutoPublisher...
+[2025-10-27T02:08:18.276Z] 🚀 Найдено 4 статей. Начинаю публикацию...
+[2025-10-27T02:08:18.277Z] 📝 Опубликована: test-article.md
+[2025-10-27T02:08:18.277Z] 📝 Опубликована: как-укрепить-иммунитет-осенью.md
+[2025-10-27T02:08:18.277Z] 📝 Опубликована: покраснение-глаз-и-жжение.md
+[2025-10-27T02:08:18.278Z] 📝 Опубликована: что-делать-при-панической-атаке.md
+[2025-10-27T02:08:36.239Z] 🌐 Сайт пересобран успешно.
+[2025-10-27T02:08:36.459Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/test-article.html
+[2025-10-27T02:08:36.685Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/как-укрепить-иммунитет-осенью.html
+[2025-10-27T02:08:36.921Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/покраснение-глаз-и-жжение.html
+[2025-10-27T02:08:37.131Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/что-делать-при-панической-атаке.html
+[2025-10-27T02:08:37.131Z] ✅ Публикация завершена успешно.
+(node:579958) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ai-auto-publisher/ai-auto-publisher.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2025-10-27T03:00:02.409Z] 🚀 Запуск AI-AutoPublisher...
+[2025-10-27T03:00:02.414Z] 🚀 Найдено 4 статей. Начинаю публикацию...
+[2025-10-27T03:00:02.414Z] 📝 Опубликована: test-article.md
+[2025-10-27T03:00:02.415Z] 📝 Опубликована: как-укрепить-иммунитет-осенью.md
+[2025-10-27T03:00:02.416Z] 📝 Опубликована: покраснение-глаз-и-жжение.md
+[2025-10-27T03:00:02.416Z] 📝 Опубликована: что-делать-при-панической-атаке.md
+[2025-10-27T03:00:19.905Z] 🌐 Сайт пересобран успешно.
+[2025-10-27T03:00:20.348Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/test-article.html
+[2025-10-27T03:00:20.555Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/как-укрепить-иммунитет-осенью.html
+[2025-10-27T03:00:20.753Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/покраснение-глаз-и-жжение.html
+[2025-10-27T03:00:20.959Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/что-делать-при-панической-атаке.html
+[2025-10-27T03:00:20.960Z] ✅ Публикация завершена успешно.
+[2025-10-27T04:08:18.627Z] 🚀 Запуск AI-AutoPublisher...
+[2025-10-27T04:08:18.630Z] 🚀 Найдено 4 статей. Начинаю публикацию...
+[2025-10-27T04:08:18.630Z] 📝 Опубликована: test-article.md
+[2025-10-27T04:08:18.631Z] 📝 Опубликована: как-укрепить-иммунитет-осенью.md
+[2025-10-27T04:08:18.631Z] 📝 Опубликована: покраснение-глаз-и-жжение.md
+[2025-10-27T04:08:18.631Z] 📝 Опубликована: что-делать-при-панической-атаке.md
+[2025-10-27T04:08:37.428Z] 🌐 Сайт пересобран успешно.
+[2025-10-27T04:08:37.665Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/test-article.html
+[2025-10-27T04:08:37.869Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/как-укрепить-иммунитет-осенью.html
+[2025-10-27T04:08:38.083Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/покраснение-глаз-и-жжение.html
+[2025-10-27T04:08:38.291Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/что-делать-при-панической-атаке.html
+[2025-10-27T04:08:38.291Z] ✅ Публикация завершена успешно.
+(node:761943) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ai-auto-publisher/ai-auto-publisher.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2025-10-27T06:08:28.601Z] 🚀 Запуск AI-AutoPublisher...
+[2025-10-27T06:08:28.614Z] 🚀 Найдено 4 статей. Начинаю публикацию...
+[2025-10-27T06:08:28.616Z] 📝 Опубликована: test-article.md
+[2025-10-27T06:08:28.616Z] 📝 Опубликована: как-укрепить-иммунитет-осенью.md
+[2025-10-27T06:08:28.617Z] 📝 Опубликована: покраснение-глаз-и-жжение.md
+[2025-10-27T06:08:28.617Z] 📝 Опубликована: что-делать-при-панической-атаке.md
+[2025-10-27T06:08:50.313Z] 🌐 Сайт пересобран успешно.
+[2025-10-27T06:08:50.521Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/test-article.html
+[2025-10-27T06:08:50.756Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/как-укрепить-иммунитет-осенью.html
+[2025-10-27T06:08:50.982Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/покраснение-глаз-и-жжение.html
+[2025-10-27T06:08:51.201Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/что-делать-при-панической-атаке.html
+[2025-10-27T06:08:51.201Z] ✅ Публикация завершена успешно.
+(node:943763) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ai-auto-publisher/ai-auto-publisher.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2025-10-27T08:08:36.073Z] 🚀 Запуск AI-AutoPublisher...
+[2025-10-27T08:08:36.074Z] 🚀 Найдено 4 статей. Начинаю публикацию...
+[2025-10-27T08:08:36.076Z] 📝 Опубликована: test-article.md
+[2025-10-27T08:08:36.077Z] 📝 Опубликована: как-укрепить-иммунитет-осенью.md
+[2025-10-27T08:08:36.077Z] 📝 Опубликована: покраснение-глаз-и-жжение.md
+[2025-10-27T08:08:36.077Z] 📝 Опубликована: что-делать-при-панической-атаке.md
+[2025-10-27T08:09:00.416Z] 🌐 Сайт пересобран успешно.
+[2025-10-27T08:09:00.702Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/test-article.html
+[2025-10-27T08:09:00.926Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/как-укрепить-иммунитет-осенью.html
+[2025-10-27T08:09:01.138Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/покраснение-глаз-и-жжение.html
+[2025-10-27T08:09:01.378Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/что-делать-при-панической-атаке.html
+[2025-10-27T08:09:01.378Z] ✅ Публикация завершена успешно.
+(node:1125466) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ai-auto-publisher/ai-auto-publisher.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2025-10-27T08:18:42.028Z] 🚀 Запуск AI-AutoPublisher...
+[2025-10-27T08:18:42.038Z] 🚀 Найдено 4 статей. Начинаю публикацию...
+[2025-10-27T08:18:42.038Z] 📝 Опубликована: test-article.md
+[2025-10-27T08:18:42.042Z] 📝 Опубликована: как-укрепить-иммунитет-осенью.md
+[2025-10-27T08:18:42.042Z] 📝 Опубликована: покраснение-глаз-и-жжение.md
+[2025-10-27T08:18:42.042Z] 📝 Опубликована: что-делать-при-панической-атаке.md
+[2025-10-27T08:19:00.586Z] 🌐 Сайт пересобран успешно.
+[2025-10-27T08:19:00.805Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/test-article.html
+[2025-10-27T08:19:01.016Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/как-укрепить-иммунитет-осенью.html
+[2025-10-27T08:19:01.240Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/покраснение-глаз-и-жжение.html
+[2025-10-27T08:19:01.465Z] 📡 Отправлено в IndexNow: https://sprosi-vracha.com/content/что-делать-при-панической-атаке.html
+[2025-10-27T08:19:01.466Z] ✅ Публикация завершена успешно.
+(node:1142557) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ai-auto-publisher/ai-auto-publisher.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

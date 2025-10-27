@@ -1,0 +1,20 @@
+(node:576321) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ai-content-orchestrator/ai-content-orchestrator.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:759161) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ai-content-orchestrator/ai-content-orchestrator.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:942192) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ai-content-orchestrator/ai-content-orchestrator.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1123917) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ai-content-orchestrator/ai-content-orchestrator.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1142496) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///opt/sprosi-vracha-ai/apps/ai-content-orchestrator/ai-content-orchestrator.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /opt/sprosi-vracha-ai/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

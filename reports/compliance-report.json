@@ -1,0 +1,27 @@
+{
+  "timestamp": "2025-10-27T06:00:01.486Z",
+  "report": [
+    {
+      "url": "https://sprosi-vracha.com/sitemap-0.xml",
+      "result": [
+        "❌ Нет автора",
+        "❌ Нет указания источников",
+        "❌ Нет медицинского дисклеймера",
+        "❌ Нет Schema.org JSON-LD",
+        "⚠️ Нет медицинской схемы (MedicalWebPage)",
+        "✅ YMYL-критерии соблюдены"
+      ]
+    },
+    {
+      "url": "https://sprosi-vracha.com/sitemap-0.xml",
+      "result": [
+        "❌ Нет автора",
+        "❌ Нет указания источников",
+        "❌ Нет медицинского дисклеймера",
+        "❌ Нет Schema.org JSON-LD",
+        "⚠️ Нет медицинской схемы (MedicalWebPage)",
+        "✅ YMYL-критерии соблюдены"
+      ]
+    }
+  ]
+}
