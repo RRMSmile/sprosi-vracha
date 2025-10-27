@@ -63,11 +63,18 @@ RESPONSE_TIME_MS=$((END_PING - START_PING))
 # === 9. Подсчёт статей ===
 ARTICLE_COUNT=$(find /opt/sprosi-vracha-ai/data/articles -type f -name "*.md" 2>/dev/null | wc -l)
 
-# === 10. Системные метрики ===
+# === 10. Ошибки за сутки (ai-error-watcher.log) ===
+ERROR_LOG="/opt/sprosi-vracha-ai/apps/ai-error-watcher/errors.log"
+ERRORS_24H=0
+if [ -f "$ERROR_LOG" ]; then
+  ERRORS_24H=$(grep -c "$(date --date='-1 day' '+%Y-%m-%d')" "$ERROR_LOG" || echo 0)
+fi
+
+# === 11. Системные метрики ===
 CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8 "%"}')
 RAM_USAGE=$(free -m | awk '/Mem:/ {printf "%dMB/%dMB (%.1f%%)", $3, $2, $3/$2*100}')
 
-# === 11. Telegram-уведомление ===
+# === 12. Telegram-уведомление ===
 END_TIME=$(date +%s)
 BUILD_TIME=$((END_TIME - START_TIME))
 BUILD_TIME_STR=$(printf "%d мин %02d сек" $((BUILD_TIME/60)) $((BUILD_TIME%60)))
@@ -80,7 +87,7 @@ if [ -n "$TG_TOKEN" ] && [ -n "$TG_CHAT" ]; then
     STATUS_TEXT="Сайт доступен (${RESPONSE_TIME_MS} мс)"
   fi
 
-  MESSAGE="${STATUS_ICON} *Sprosi-Vracha обновлён!*%0A🕒 ${DATE}%0A📄 Статей: ${ARTICLE_COUNT}%0A🧩 Активные модули: ${active_count}/${total_count}%0A💾 Бэкап: ${BACKUP_SIZE}%0A⚙️ Время сборки: ${BUILD_TIME_STR}%0A🔥 CPU: ${CPU_USAGE}%0A🧠 RAM: ${RAM_USAGE}%0A🌐 ${STATUS_TEXT}%0A👉 [sprosi-vracha.com](https://sprosi-vracha.com)"
+  MESSAGE="${STATUS_ICON} *Sprosi-Vracha обновлён!*%0A🕒 ${DATE}%0A📄 Статей: ${ARTICLE_COUNT}%0A🧩 Активные модули: ${active_count}/${total_count}%0A💾 Бэкап: ${BACKUP_SIZE}%0A⚙️ Время сборки: ${BUILD_TIME_STR}%0A🔥 CPU: ${CPU_USAGE}%0A🧠 RAM: ${RAM_USAGE}%0A❗️Ошибок за 24ч: ${ERRORS_24H}%0A🌐 ${STATUS_TEXT}%0A👉 [sprosi-vracha.com](https://sprosi-vracha.com)"
   curl -s -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
     -d "chat_id=${TG_CHAT}" \
     -d "text=${MESSAGE}" \
@@ -90,6 +97,6 @@ else
   echo "⚠️  Telegram токен или chat_id не заданы"
 fi
 
-# === 12. Завершение ===
+# === 13. Завершение ===
 echo "🎉 Деплой завершён: ${DATE}"
 
