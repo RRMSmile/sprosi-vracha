@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 set -e
 
-echo "🚀 [Sprosi-Vracha] Запуск полного деплоя..."
+START_TIME=$(date +%s)
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
+echo "🚀 [Sprosi-Vracha] Запуск полного деплоя..."
 
 # === 1. Проверка окружения ===
 if [ ! -f "/opt/sprosi-vracha-ai/.env" ]; then
   echo "⚠️  Файл .env не найден, создайте /opt/sprosi-vracha-ai/.env перед запуском."
   exit 1
 fi
+source /opt/sprosi-vracha-ai/.env
 
 # === 2. Сборка фронта ===
 echo "📦 Сборка фронта..."
@@ -18,6 +20,7 @@ npm run build --silent
 
 # === 3. Деплой статики ===
 echo "📤 Деплой в /var/www/sprosi-vracha..."
+mkdir -p /var/www/sprosi-vracha
 rsync -a --delete out/ /var/www/sprosi-vracha/
 nginx -t && systemctl reload nginx
 
@@ -27,34 +30,59 @@ node /opt/sprosi-vracha-ai/apps/ai-sitemap/ai-sitemap.js || echo "⚠️  Sitema
 
 # === 5. Проверка и рестарт сервисов ===
 echo "🔁 Проверка статуса AI-сервисов..."
-for svc in ai-content-pipeline ai-content-orchestrator ai-auto-publisher ai-telegram-reporter ai-error-watcher; do
+active_count=0
+total_count=0
+for svc in $(systemctl list-units --type=service --no-pager | grep ai- | awk '{print $1}'); do
+  total_count=$((total_count+1))
   if systemctl is-active --quiet "$svc"; then
-    echo "✅ $svc активен"
-  else
-    echo "🔄 Перезапуск $svc..."
-    systemctl restart "$svc" || echo "⚠️ Не удалось перезапустить $svc"
+    active_count=$((active_count+1))
   fi
 done
 
 # === 6. Резервное копирование ===
 echo "💾 Создание резервной копии..."
 mkdir -p /opt/sprosi-vracha-ai/backups
-tar -czf /opt/sprosi-vracha-ai/backups/site-$(date +%F_%H%M).tar.gz /var/www/sprosi-vracha > /dev/null 2>&1 &
-tar -czf /opt/sprosi-vracha-ai/backups/data-$(date +%F_%H%M).tar.gz /opt/sprosi-vracha-ai/data > /dev/null 2>&1 &
-wait
-echo "✅ Бэкапы созданы"
+BACKUP_FILE="/opt/sprosi-vracha-ai/backups/site-$(date +%F_%H%M).tar.gz"
+tar -czf "$BACKUP_FILE" /var/www/sprosi-vracha > /dev/null 2>&1
+BACKUP_SIZE=$(du -h "$BACKUP_FILE" | awk '{print $1}')
+echo "✅ Бэкап создан (${BACKUP_SIZE})"
 
 # === 7. Git-синхронизация ===
 cd /opt/sprosi-vracha-ai
 git add -A
-git commit -m "auto-deploy: ${DATE}" || echo "⚠️  Нет изменений для коммита"
-git push origin main || echo "⚠️  Не удалось выполнить git push (возможно, офлайн)"
+git commit -m "auto-deploy: ${DATE}" >/dev/null 2>&1 || true
+git push origin main >/dev/null 2>&1 || true
 
 # === 8. Проверка сайта ===
 echo "🌐 Проверка доступности сайта..."
-curl -s -o /dev/null -w "%{http_code}\n" https://sprosi-vracha.com | grep -q "200" \
-  && echo "✅ Сайт доступен" || echo "⚠️ Сайт не отвечает (проверь Nginx)"
+HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" https://sprosi-vracha.com || echo "000")
 
-# === 9. Завершение ===
+# === 9. Подсчёт статей ===
+ARTICLE_COUNT=$(find /opt/sprosi-vracha-ai/data/articles -type f -name "*.md" 2>/dev/null | wc -l)
+
+# === 10. Telegram-уведомление ===
+END_TIME=$(date +%s)
+BUILD_TIME=$((END_TIME - START_TIME))
+BUILD_TIME_STR=$(printf "%d мин %02d сек" $((BUILD_TIME/60)) $((BUILD_TIME%60)))
+
+if [ -n "$TG_TOKEN" ] && [ -n "$TG_CHAT" ]; then
+  STATUS_ICON="⚠️"
+  STATUS_TEXT="Проверить Nginx"
+  if [ "$HTTP_CODE" = "200" ]; then
+    STATUS_ICON="✅"
+    STATUS_TEXT="Сайт доступен"
+  fi
+
+  MESSAGE="${STATUS_ICON} *Sprosi-Vracha обновлён!*%0A🕒 ${DATE}%0A📄 Статей: ${ARTICLE_COUNT}%0A🧩 Активные модули: ${active_count}/${total_count}%0A💾 Бэкап: ${BACKUP_SIZE}%0A⚙️ Время сборки: ${BUILD_TIME_STR}%0A🌐 ${STATUS_TEXT}%0A👉 [sprosi-vracha.com](https://sprosi-vracha.com)"
+  curl -s -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
+    -d "chat_id=${TG_CHAT}" \
+    -d "text=${MESSAGE}" \
+    -d "parse_mode=Markdown" >/dev/null 2>&1 && \
+  echo "📨 Telegram уведомление отправлено"
+else
+  echo "⚠️  Telegram токен или chat_id не заданы"
+fi
+
+# === 11. Завершение ===
 echo "🎉 Деплой завершён: ${DATE}"
 

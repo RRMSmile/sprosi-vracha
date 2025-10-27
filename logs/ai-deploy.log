@@ -1,0 +1,53 @@
+🚀 [Sprosi-Vracha] Запуск полного деплоя...
+📦 Сборка фронта...
+  ▲ Next.js 15.0.0
+  - Environments: .env.production
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/5) ...
+   Generating static pages (1/5) 
+   Generating static pages (2/5) 
+   Generating static pages (3/5) 
+ ✓ Generating static pages (5/5)
+   Finalizing page optimization ...
+   Collecting build traces ...
+   Exporting (0/3) ...
+ ✓ Exporting (3/3)
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    540 B          99.8 kB
+├ ○ /_not-found                          897 B           100 kB
+└ ○ /health                              1.01 kB         100 kB
++ First Load JS shared by all            99.2 kB
+  ├ chunks/215-a7e0b1eef037aa58.js       44.8 kB
+  ├ chunks/4bd1b696-239c50da69b5278f.js  52.6 kB
+  └ other shared chunks (total)          1.86 kB
+
+
+○  (Static)  prerendered as static content
+
+📤 Деплой в /var/www/sprosi-vracha...
+2025/10/27 08:22:52 [emerg] 1150152#1150152: open() "/etc/nginx/sites-enabled/sprosi-vracha.com.conf" failed (2: No such file or directory) in /etc/nginx/nginx.conf:60
+nginx: configuration file /etc/nginx/nginx.conf test failed
+🗺  Генерация sitemap...
+node:internal/modules/cjs/loader:1210
+  throw err;
+  ^
+
+Error: Cannot find module '/opt/sprosi-vracha-ai/apps/ai-sitemap/ai-sitemap.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+    at Module._load (node:internal/modules/cjs/loader:1038:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+    at node:internal/main/run_main_module:28:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v20.19.5
+⚠️  Sitemap не сгенерирован
+🔁 Проверка статуса AI-сервисов...
+💾 Создание резервной копии...
+✅ Бэкап создан (220K)
