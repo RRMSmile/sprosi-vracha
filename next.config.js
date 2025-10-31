@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  output: 'export',              // Включает статический экспорт
   images: {
-    unoptimized: true
+    unoptimized: true            // Отключает оптимизацию картинок (иначе ошибка при экспорте)
   },
-  trailingSlash: true,
-  reactStrictMode: true
-};
+  trailingSlash: true            // Чтобы все пути имели '/' и корректно открывались через Nginx
+}
 
-module.exports = nextConfig;
+export default nextConfig
+
